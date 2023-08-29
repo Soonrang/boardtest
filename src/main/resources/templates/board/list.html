@@ -1,27 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/basic.html}">
+<html xmlns:th="http://www.thymeleaf.org">
 
-<div>
+<body>
 
-  <h1>게시판</h1>
-
+<div class="layout">
   <table>
     <thead>
     <tr>
-      <th>번호</th>
+      <th>글번호</th>
       <th>제목</th>
+      <th>내용</th>
     </tr>
     </thead>
-
     <tbody>
-    <tr th:each="dto:${responseDTO.dtoList}">
-      <th>[[${dto.bno}]]</th>
-      <th>[[${dto.title}]]</th>
-      <th>[[${dto.content}]]</th>
+    <tr th:each = "dto:${boardList}">
+      <td th:text="${dto.bno}">1</td>
+      <td th:text="${dto.title}">1</td>
+      <td th:text="${dto.content}">제목입니다.</td>
     </tr>
     </tbody>
   </table>
-
 </div>
+
+<a th:href="@{/board/register}">➕</a>
+
+</body>
+</html>
