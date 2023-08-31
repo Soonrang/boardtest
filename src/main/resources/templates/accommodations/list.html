@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+<body>
+<form action="/Accommodations/list" method="get">
+
+  <div>
+    <div>
+      <select name="type">
+        <option value="">---</option>
+        <option value="n" th:selected="${dto.type == 'n'}">숙소이름</option>
+        <option value="f" th:selected="${dto.type == 'f'}">특징</option>
+        <option value="l" th:selected="${dto.type == 'l'}">위치</option>
+      </select>
+      <div>
+        <input type="text" class="form-control" name="keyword" th:value="${dto.keyword}">
+      </div>
+      <button type="submit">검색</button> <!-- 검색 버튼 추가 -->
+    </div>
+  </div>
+
+
+
+</form>
+
+<div class="layout">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>번호</th>
+      <th>숙소이름</th>
+      <th>숙소특징(키워드)</th>
+      <th>위치</th>
+      <th>예약가능일자(시작일)</th>
+      <th>예약가능일자(종료일)</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dto, iterStat : ${accommodationsList}">
+      <td th:text="${iterStat.count}">1</td>
+      <td th:text="${dto.accommodations_Name}">숙소 이름</td>
+      <td th:text="${dto.accommodations_Feature}">숙소 특징</td>
+      <td th:text="${dto.location}">위치</td>
+      <td th:text="${dto.booking_sdate}">시작일</td>
+      <td th:text="${dto.booking_edate}">종료일</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<a th:href="@{/Accommodations/register}" class="btn btn-primary">숙소등록</a>
+
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>게시글 등록</title>
+</head>
+
+<body>
+
+<h1>게시글 등록</h1>
+
+<form action="/Accommodations/register" method="post">
+  <div>
+    <div>
+      <span>제목</span>
+      <input type="text" name="accommodations_Name" class="form-control" placeholder="숙소이름">
+    </div>
+    <div>
+      <span>특징</span>
+      <input type="text" name="accommodations_Feature" class="form-control" placeholder="특징">
+    </div>
+
+    <div>
+      <span>위치</span>
+      <input type="text" name="location" class="form-control" placeholder="위치">
+    </div>
+
+    <div>
+      <span>시작날짜</span>
+      <input type="date" name="booking_sdate" class="form-control">
+    </div>
+
+    <div>
+      <span>종료날짜</span>
+      <input type="date" name="booking_edate" class="form-control">
+    </div>
+
+  </div>
+
+  <button type="submit">등록</button>
+</form>
+
+</body>
+
+</html>
